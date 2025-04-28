@@ -57,4 +57,34 @@ class SinglyLinkedList {
         }
         System.out.println("null");
     }
+
+
+    public void insertAt(int index, int data) {
+        if (index < 0) {
+            System.out.println("Invalid index.");
+            return;
+        }
+        if (index == 0) {
+            prepend(data);
+            return;
+        }
+        
+        Node newNode = new Node(data);
+        Node current = head;
+        int currentIndex = 0;
+
+        while (current != null && currentIndex < index - 1) {
+            current = current.next;
+            currentIndex++;
+        }
+
+        if (current == null) {
+            System.out.println("Index out of bounds. Appending at the end.");
+            append(data);
+            return;
+        }
+
+        newNode.next = current.next;
+        current.next = newNode;
+    }
 }

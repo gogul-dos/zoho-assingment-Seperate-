@@ -11,6 +11,8 @@ public class Main {
         sll.print();
         sll.remove(20);
         sll.print();
+        sll.insertAt(10, 50);
+        sll.print();
         System.out.println();
         System.out.println();
 
@@ -24,6 +26,8 @@ public class Main {
         dll.print();
         dll.printReverse();
         dll.remove(10);
+        dll.print();
+        dll.insertAt(2, 25); 
         dll.print();
         System.out.println();
         System.out.println();

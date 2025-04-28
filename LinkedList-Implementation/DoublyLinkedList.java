@@ -31,7 +31,6 @@ class DoublyLinkedList {
         tail = newNode;
     }
 
-
     public void prepend(int data) {
         Node newNode = new Node(data);
         if (head == null) {
@@ -43,7 +42,6 @@ class DoublyLinkedList {
         head.prev = newNode;
         head = newNode;
     }
-
 
     public void remove(int data) {
         if (head == null) return;
@@ -67,7 +65,6 @@ class DoublyLinkedList {
         }
     }
 
-
     public void print() {
         Node current = head;
         while (current != null) {
@@ -84,5 +81,37 @@ class DoublyLinkedList {
             current = current.prev;
         }
         System.out.println("null");
+    }
+
+    
+    public void insertAt(int index, int data) {
+        if (index < 0) {
+            System.out.println("Invalid index.");
+            return;
+        }
+        if (index == 0) {
+            prepend(data);
+            return;
+        }
+        
+        Node newNode = new Node(data);
+        Node current = head;
+        int currentIndex = 0;
+
+        while (current != null && currentIndex < index) {
+            current = current.next;
+            currentIndex++;
+        }
+        
+        if (current == null) { 
+            append(data);
+            return;
+        }
+        
+        Node previous = current.prev;
+        previous.next = newNode;
+        newNode.prev = previous;
+        newNode.next = current;
+        current.prev = newNode;
     }
 }
